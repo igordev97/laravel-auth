@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\MockObject\Stub\ReturnReference;
 
 class ProductController extends Controller
 {
@@ -54,5 +55,12 @@ class ProductController extends Controller
     {
         $title = $product->name;
         return view('edit-product',compact('product','title'));
+    }
+    public function saveProductEdit(Request $request,ProductModel $product)
+    {
+        $product->name = $request->get('name');
+
+        $product->save();
+        return redirect()->back();
     }
 }

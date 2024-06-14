@@ -20,7 +20,7 @@ Route::get('/admin/edit-product/edit/{product}',[ProductController::class,'editP
 
 Route::get('/admin/edit-product/delete/{product}',[ProductController::class,'deleteProduct'])->name('product.delete');
 
-//Route::post('/admin/edit-product/edit/save/{product}',[ProductController::class,'saveEdit'])->name('product.edit.save');
+
 Route::post('/admin/edit-product/edit/{product}',[ProductController::class,'saveProductEdit'])->name('product.save');
 
 
