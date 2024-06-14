@@ -1,11 +1,32 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/',[\App\Http\Controllers\HomeController::class,'index'])->name('home.page');
+
+Route::view('/admin/add-product','add-product',['title'=>'Add new product'])->middleware('auth')->name('product.add');
 
 
-Route::get('/', function () {
+Route::post('/admin/add-product/create',[\App\Http\Controllers\ProductController::class,'createNewProduct'])->name('product.create');
+
+
+Route::get('/product/{product}',[ProductController::class,'singleProduct'])->name('product.single');
+
+Route::get('/admin/edit-products',[ProductController::class,'editProducts']);
+
+Route::get('/admin/edit-product/edit/{product}',[ProductController::class,'editProduct'])->name('product.edit');
+Route::get('/admin/edit-product/delete/{product}',[ProductController::class,'deleteProduct'])->name('product.delete');
+
+
+
+
+
+
+
+
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
