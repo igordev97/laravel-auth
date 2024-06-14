@@ -49,4 +49,10 @@ class ProductController extends Controller
         $products=ProductModel::all();
         return view('edit-products',compact('products','title'));
     }
+
+    public function editProduct(ProductModel $product)
+    {
+        $title = $product->name;
+        return view('edit-product',compact('product','title'));
+    }
 }

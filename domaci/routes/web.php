@@ -17,9 +17,11 @@ Route::get('/product/{product}',[ProductController::class,'singleProduct'])->nam
 Route::get('/admin/edit-products',[ProductController::class,'editProducts']);
 
 Route::get('/admin/edit-product/edit/{product}',[ProductController::class,'editProduct'])->name('product.edit');
+
 Route::get('/admin/edit-product/delete/{product}',[ProductController::class,'deleteProduct'])->name('product.delete');
 
-
+//Route::post('/admin/edit-product/edit/save/{product}',[ProductController::class,'saveEdit'])->name('product.edit.save');
+Route::post('/admin/edit-product/edit/{product}',[ProductController::class,'saveProductEdit'])->name('product.save');
 
 
 
